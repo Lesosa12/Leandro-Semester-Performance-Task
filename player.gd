@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var speed = 400
+@onready var bg_music = $"../bg music"
+@onready var enemy_hit = $"../enemy hit"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +25,11 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 		
 	position += velocity * delta
+	
+
+
+
+func _on_body_entered(body):
+	hide()
+	enemy_hit.play()
+	bg_music.stop()
